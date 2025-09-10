@@ -1,0 +1,141 @@
+[gd_scene load_steps=14 format=3 uid="uid://bphnd4o4umroc"]
+
+[ext_resource type="PackedScene" uid="uid://bk1q8mb076ok8" path="res://Scenes/player.tscn" id="1_cr88r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6kwl"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_cr88r"]
+
+[sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_cr88r"]
+graph_data = {
+"connections": [[43, 0, 45, 0], [61, 0, 10, 0], [60, 0, 61, 0], [59, 0, 58, 2], [58, 0, 60, 1], [57, 0, 59, 0], [57, 0, 60, 2], [56, 0, 60, 0], [55, 0, 53, 1], [55, 0, 57, 0], [53, 0, 56, 2], [37, 0, 43, 1], [40, 0, 37, 0], [40, 0, 55, 0], [44, 0, 53, 0], [44, 0, 55, 1], [44, 0, 57, 1]],
+"nodes": {
+"10": {
+"gui_position": Vector2(1480, 740),
+"type": "OutputType"
+},
+"37": {
+"b": 20.0,
+"gui_position": Vector2(200, 320),
+"name": &"altura_ruido",
+"type": "Multiply"
+},
+"40": {
+"auto_connect": true,
+"gui_position": Vector2(-20, 320),
+"noise": SubResource("FastNoiseLite_cr88r"),
+"type": "Noise2D",
+"x": 0.0,
+"y": 0.0
+},
+"43": {
+"auto_connect": true,
+"gui_position": Vector2(520, 320),
+"type": "SdfPlane",
+"y": 0.0
+},
+"44": {
+"gui_position": Vector2(80, 600),
+"type": "InputY"
+},
+"45": {
+"auto_connect": true,
+"gui_position": Vector2(860, 320),
+"type": "OutputSDF"
+},
+"53": {
+"gui_position": Vector2(640, 640),
+"type": "Subtract"
+},
+"55": {
+"gui_position": Vector2(200, 480),
+"name": &"Alt_terreno",
+"type": "Multiply"
+},
+"56": {
+"a": 1.0,
+"b": 0.0,
+"gui_position": Vector2(800, 640),
+"threshold": 0.0,
+"type": "Select"
+},
+"57": {
+"gui_position": Vector2(400, 820),
+"name": &"Profundidad",
+"type": "Subtract"
+},
+"58": {
+"a": 2.0,
+"b": 3.0,
+"gui_position": Vector2(820, 820),
+"threshold": 0.0,
+"type": "Select"
+},
+"59": {
+"b": 20.0,
+"gui_position": Vector2(640, 820),
+"type": "Subtract"
+},
+"60": {
+"gui_position": Vector2(1144.66, 745.36),
+"threshold": 0.0,
+"type": "Select"
+},
+"61": {
+"gui_position": Vector2(1320, 740),
+"type": "Floor"
+}
+},
+"version": 2
+}
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_58ovr"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_cr88r"]
+color = Color(0.594, 0.75, 0.36, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_vmk76"]
+color = Color(0.6, 0.4348, 0.246, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_k6kwl"]
+color = Color(0.59, 0.59, 0.59, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_k6kwl"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_58ovr"), SubResource("VoxelBlockyModelCube_cr88r"), SubResource("VoxelBlockyModelCube_vmk76"), SubResource("VoxelBlockyModelCube_k6kwl")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_ja2gc"]
+library = SubResource("VoxelBlockyLibrary_k6kwl")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vmk76"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ri1lo"]
+sky_material = SubResource("ProceduralSkyMaterial_vmk76")
+
+[sub_resource type="Environment" id="Environment_k6kwl"]
+background_mode = 2
+sky = SubResource("Sky_ri1lo")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Test2" type="Node3D"]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+material_override = SubResource("StandardMaterial3D_k6kwl")
+generator = SubResource("VoxelGeneratorGraph_cr88r")
+mesher = SubResource("VoxelMesherBlocky_ja2gc")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k6kwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 31.1378, -19.6111)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_cr88r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97387, 10.3407, 0)
