@@ -1,0 +1,118 @@
+[gd_scene load_steps=14 format=3 uid="uid://bphnd4o4umroc"]
+
+[ext_resource type="PackedScene" uid="uid://bk1q8mb076ok8" path="res://Scenes/player.tscn" id="1_cr88r"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vmk76"]
+
+[sub_resource type="VoxelGeneratorGraph" id="VoxelGeneratorGraph_k6kwl"]
+graph_data = {
+"connections": [[7, 0, 5, 1], [6, 0, 7, 0], [5, 0, 4, 0], [13, 0, 8, 0], [12, 0, 13, 0], [11, 0, 12, 2], [11, 0, 12, 0], [10, 0, 11, 2], [10, 0, 11, 0]],
+"nodes": {
+"10": {
+"a": 0.0,
+"b": 3.0,
+"gui_position": Vector2(580, 140),
+"t": 0.0,
+"threshold": 3.0,
+"type": "Select"
+},
+"11": {
+"b": 2.0,
+"gui_position": Vector2(780, 140),
+"threshold": 2.0,
+"type": "Select"
+},
+"12": {
+"b": 1.0,
+"gui_position": Vector2(1000, 140),
+"threshold": 1.0,
+"type": "Select"
+},
+"13": {
+"gui_position": Vector2(1200, 160),
+"type": "Floor"
+},
+"4": {
+"auto_connect": true,
+"gui_position": Vector2(720, -20),
+"type": "OutputSDF"
+},
+"5": {
+"auto_connect": true,
+"gui_position": Vector2(560, -20),
+"type": "SdfPlane",
+"y": 0.0
+},
+"6": {
+"auto_connect": true,
+"gui_position": Vector2(220, -20),
+"noise": SubResource("FastNoiseLite_vmk76"),
+"type": "Noise2D",
+"x": 0.0,
+"y": 0.0
+},
+"7": {
+"b": 20.0,
+"gui_position": Vector2(400, -20),
+"type": "Multiply"
+},
+"8": {
+"gui_position": Vector2(1380, 160),
+"type": "OutputType"
+}
+},
+"version": 2
+}
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_58ovr"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_cr88r"]
+color = Color(0.594, 0.75, 0.36, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_vmk76"]
+color = Color(0.6, 0.4348, 0.246, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_k6kwl"]
+color = Color(0.59, 0.59, 0.59, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_k6kwl"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_58ovr"), SubResource("VoxelBlockyModelCube_cr88r"), SubResource("VoxelBlockyModelCube_vmk76"), SubResource("VoxelBlockyModelCube_k6kwl")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_ja2gc"]
+library = SubResource("VoxelBlockyLibrary_k6kwl")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_k6kwl"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+uv1_triplanar = true
+uv1_world_triplanar = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_vmk76"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ri1lo"]
+sky_material = SubResource("ProceduralSkyMaterial_vmk76")
+
+[sub_resource type="Environment" id="Environment_k6kwl"]
+background_mode = 2
+sky = SubResource("Sky_ri1lo")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Test2" type="Node3D"]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+generator = SubResource("VoxelGeneratorGraph_k6kwl")
+mesher = SubResource("VoxelMesherBlocky_ja2gc")
+material_override = SubResource("StandardMaterial3D_k6kwl")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_k6kwl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 31.1378, -19.6111)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_cr88r")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.97387, 10.3407, 0)

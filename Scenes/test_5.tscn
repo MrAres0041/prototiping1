@@ -1,0 +1,51 @@
+[gd_scene load_steps=12 format=3 uid="uid://hmp34wfqyng6"]
+
+[ext_resource type="VoxelGeneratorScript" uid="uid://fesxdqitspcy" path="res://Resources/Generation2.tres" id="1_rtig7"]
+[ext_resource type="PackedScene" uid="uid://bk1q8mb076ok8" path="res://Scenes/player.tscn" id="2_p1cy1"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_p1cy1"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_tgpnc"]
+color = Color(0.37969, 0.606766, 0.243195, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_p1cy1"]
+color = Color(0.44, 0.325013, 0.1936, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_mope7"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_p1cy1"), SubResource("VoxelBlockyModelCube_tgpnc"), SubResource("VoxelBlockyModelCube_p1cy1")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_lv0fi"]
+library = SubResource("VoxelBlockyLibrary_mope7")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rtig7"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_p1cy1"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_tgpnc"]
+sky_material = SubResource("ProceduralSkyMaterial_p1cy1")
+
+[sub_resource type="Environment" id="Environment_mope7"]
+background_mode = 2
+sky = SubResource("Sky_tgpnc")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="Test_5" type="VoxelTerrain"]
+generator = ExtResource("1_rtig7")
+mesher = SubResource("VoxelMesherBlocky_lv0fi")
+material_override = SubResource("StandardMaterial3D_rtig7")
+run_stream_in_editor = false
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_mope7")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 41.2985, 90.4874, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("2_p1cy1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.7167, 0)

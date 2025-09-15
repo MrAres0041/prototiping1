@@ -1,0 +1,8 @@
+[gd_resource type="VoxelGeneratorScript" script_class="Generator" load_steps=3 format=3 uid="uid://fesxdqitspcy"]
+
+[ext_resource type="Script" uid="uid://cs1lfqlhp3nxy" path="res://Scripts/Terrain/generator2.gd" id="1_ackl1"]
+[ext_resource type="FastNoiseLite" uid="uid://dtu7j7u75csm4" path="res://Resources/Noise.tres" id="1_h57ob"]
+
+[resource]
+script = ExtResource("1_ackl1")
+noise = ExtResource("1_h57ob")

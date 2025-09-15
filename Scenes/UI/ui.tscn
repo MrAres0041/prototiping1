@@ -1,0 +1,95 @@
+[gd_scene load_steps=3 format=3 uid="uid://cave1acpihc37"]
+
+[ext_resource type="Texture2D" uid="uid://ccpk72aog47fr" path="res://Assets/Crossair.png" id="1_ahcct"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahcct"]
+font_size = 32
+font_color = Color(0, 0, 0, 1)
+outline_size = 3
+
+[node name="UI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+
+[node name="CrosshairContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -64.0
+offset_right = 64.0
+offset_bottom = 64.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Crosshair" type="TextureRect" parent="CrosshairContainer"]
+custom_minimum_size = Vector2(32, 32)
+layout_mode = 2
+texture = ExtResource("1_ahcct")
+expand_mode = 1
+
+[node name="UpBar" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_bottom = 45.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="HP" type="HBoxContainer" parent="UpBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="UpBar/HP"]
+layout_mode = 2
+text = "100HP"
+label_settings = SubResource("LabelSettings_ahcct")
+
+[node name="MP" type="HBoxContainer" parent="UpBar"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="Label" type="Label" parent="UpBar/MP"]
+layout_mode = 2
+text = "100MP"
+label_settings = SubResource("LabelSettings_ahcct")
+
+[node name="UpBar2" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -45.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 1
+
+[node name="HP" type="HBoxContainer" parent="UpBar2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Label" type="Label" parent="UpBar2/HP"]
+layout_mode = 2
+text = "L-Hand"
+label_settings = SubResource("LabelSettings_ahcct")
+
+[node name="MP" type="HBoxContainer" parent="UpBar2"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 2
+
+[node name="Label" type="Label" parent="UpBar2/MP"]
+layout_mode = 2
+text = "R-Hand"
+label_settings = SubResource("LabelSettings_ahcct")

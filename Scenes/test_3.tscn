@@ -1,0 +1,52 @@
+[gd_scene load_steps=12 format=3 uid="uid://b02d1ieg20ix0"]
+
+[ext_resource type="PackedScene" uid="uid://bk1q8mb076ok8" path="res://Scenes/player.tscn" id="1_4ew83"]
+[ext_resource type="VoxelGeneratorScript" uid="uid://3s4r4t67v34d" path="res://Resources/Generator.tres" id="2_i545v"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_i545v"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_ldv6f"]
+sky_material = SubResource("ProceduralSkyMaterial_i545v")
+
+[sub_resource type="Environment" id="Environment_1igkl"]
+background_mode = 2
+sky = SubResource("Sky_ldv6f")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_i545v"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ldv6f"]
+color = Color(0.35535, 0.46, 0.161, 1)
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_1igkl"]
+color = Color(0.46, 0.33304, 0.1288, 1)
+
+[sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_oirli"]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_i545v"), SubResource("VoxelBlockyModelCube_ldv6f"), SubResource("VoxelBlockyModelCube_1igkl")])
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_ofawm"]
+library = SubResource("VoxelBlockyLibrary_oirli")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i545v"]
+vertex_color_use_as_albedo = true
+uv1_triplanar = true
+
+[node name="Test_3" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_1igkl")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 9.8879, 0)
+shadow_enabled = true
+
+[node name="Player" parent="." instance=ExtResource("1_4ew83")]
+
+[node name="VoxelTerrain" type="VoxelTerrain" parent="."]
+generator = ExtResource("2_i545v")
+mesher = SubResource("VoxelMesherBlocky_ofawm")
+material_override = SubResource("StandardMaterial3D_i545v")
+run_stream_in_editor = false

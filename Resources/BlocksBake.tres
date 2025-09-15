@@ -1,0 +1,22 @@
+[gd_resource type="VoxelBlockyLibrary" load_steps=6 format=3 uid="uid://cut6iwfh72v0l"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_i545v"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_joxpg"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_ldv6f"]
+color = Color(0.471327, 0.61, 0.3416, 1)
+material_override_0 = SubResource("StandardMaterial3D_joxpg")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ccwv0"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_1igkl"]
+color = Color(0.48, 0.34568, 0.1296, 1)
+material_override_0 = SubResource("StandardMaterial3D_ccwv0")
+
+[resource]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_i545v"), SubResource("VoxelBlockyModelCube_ldv6f"), SubResource("VoxelBlockyModelCube_1igkl")])

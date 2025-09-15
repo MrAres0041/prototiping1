@@ -1,0 +1,20 @@
+[gd_scene load_steps=6 format=3 uid="uid://bj2pjycd843e8"]
+
+[ext_resource type="VoxelGeneratorScript" uid="uid://3s4r4t67v34d" path="res://Resources/Generator.tres" id="1_nxypj"]
+[ext_resource type="VoxelBlockyLibrary" uid="uid://cut6iwfh72v0l" path="res://Resources/BlocksBake.tres" id="2_ntwfq"]
+[ext_resource type="PackedScene" uid="uid://bk1q8mb076ok8" path="res://Scenes/player.tscn" id="3_5u46n"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nxypj"]
+vertex_color_use_as_albedo = true
+vertex_color_is_srgb = true
+
+[sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_eeku1"]
+library = ExtResource("2_ntwfq")
+
+[node name="Test_4" type="VoxelTerrain"]
+material_override = SubResource("StandardMaterial3D_nxypj")
+run_stream_in_editor = false
+generator = ExtResource("1_nxypj")
+mesher = SubResource("VoxelMesherBlocky_eeku1")
+
+[node name="Player" parent="." instance=ExtResource("3_5u46n")]

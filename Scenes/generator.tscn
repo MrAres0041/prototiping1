@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://kikc26ki3q6i"]
+
+[ext_resource type="Script" uid="uid://dtism5tcbbyo4" path="res://Scripts/Terrain/generator.gd" id="1_3lb5q"]
+
+[node name="Generator" type="Node3D"]
+script = ExtResource("1_3lb5q")

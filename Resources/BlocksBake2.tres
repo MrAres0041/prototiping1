@@ -1,0 +1,8 @@
+[gd_resource type="VoxelBlockyLibrary" load_steps=3 format=3 uid="uid://3wm4mkl3r5dk"]
+
+[sub_resource type="VoxelBlockyModelEmpty" id="VoxelBlockyModelEmpty_1vuk5"]
+
+[sub_resource type="VoxelBlockyModelCube" id="VoxelBlockyModelCube_fk0w5"]
+
+[resource]
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_1vuk5"), SubResource("VoxelBlockyModelCube_fk0w5")])
