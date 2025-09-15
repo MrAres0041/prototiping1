@@ -30,7 +30,7 @@ const DASH_TIME:float = 0.15
 @onready var head: Node3D = $Head
 @onready var target_ray: RayCast3D = $Head/Camera3D/TargetRay
 @onready var voxel_lod_terrain:VoxelTerrain = get_parent()
-@onready var voxel_tool = voxel_lod_terrain.get_voxel_tool()
+@onready var voxel_tool: VoxelTool = voxel_lod_terrain.get_voxel_tool()
 
 
 func _ready():
@@ -47,8 +47,7 @@ func _physics_process(delta):
 	direction = Vector3.ZERO
 	forward = -global_transform.basis.z
 	right = global_transform.basis.x
-	
-	_PlaceDestroyBlock(target_pos)
+
 
 	if Input.is_action_pressed("W"):
 		direction += forward
@@ -69,6 +68,7 @@ func _physics_process(delta):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
+	_PlaceDestroyBlock(target_pos)
 	_Jump(delta)
 	_Dash(delta)
 
@@ -124,16 +124,16 @@ func _PlaceDestroyBlock(target_pos):
 	target_pos = target_ray.get_collision_point()
 	target_normal = target_ray.get_collision_normal()
 	
+	# Posición del voxel al que apuntás:
 	voxel_pos = world_to_voxel(target_pos)
 	
 	if Input.is_action_just_pressed("R_Click"):
-		var new_voxel_pos = voxel_pos + Vector3(target_normal) * 0 # o -1 según la dirección
+		#var new_voxel_pos = voxel_pos + Vector3(target_normal) * 0 # ROTO
+		var new_voxel_pos = world_to_voxel(target_pos + target_normal * 0.5) #FIXED Matematicas, no preguntes
 		voxel_tool.mode = VoxelTool.MODE_ADD
-		#voxel_tool.do_sphere(target_pos, 2)
 		voxel_tool.set_voxel(new_voxel_pos,1)
 	
 	if Input.is_action_just_pressed("L_Click"):
-		var new_voxel_pos = voxel_pos + Vector3(target_normal) * -1 # o -1 según la dirección
+		var new_voxel_pos = world_to_voxel(target_pos - target_normal * 0.5) #FIXED Matematicas, no preguntes
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		voxel_tool.set_voxel(new_voxel_pos,0)
-		print("borrando")

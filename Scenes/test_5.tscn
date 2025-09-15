@@ -37,6 +37,7 @@ glow_enabled = true
 [node name="Test_5" type="VoxelTerrain"]
 generator = ExtResource("1_rtig7")
 mesher = SubResource("VoxelMesherBlocky_lv0fi")
+max_view_distance = 64
 material_override = SubResource("StandardMaterial3D_rtig7")
 run_stream_in_editor = false
 
@@ -48,4 +49,4 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1cy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 21.7167, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 80.5275, 0)
