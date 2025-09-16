@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="ItemBus" load_steps=3 format=3 uid="uid://f6jj871ify1n"]
+
+[ext_resource type="Script" uid="uid://bvnjc2l3exqpy" path="res://Scripts/UI/ItemsRes.gd" id="1_2rqf4"]
+[ext_resource type="Script" uid="uid://bpt2u6ih8dc7q" path="res://Scripts/UI/item_bus.gd" id="2_eoxq3"]
+
+[resource]
+script = ExtResource("2_eoxq3")
+Items = Array[ExtResource("1_2rqf4")]([null, null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://bpt2u6ih8dc7q"

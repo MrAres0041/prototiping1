@@ -14,6 +14,7 @@ var right:Vector3
 var target_pos: Vector3 = Vector3(0,0,0)
 var target_normal: Vector3 = Vector3(0,0,0)
 var voxel_pos: Vector3 = Vector3(0,0,0)
+var mouse_can_move:bool = false
 
 const JUMP_VELOCITY:float = 10.0
 const GRAVITY:float = 20.0
@@ -31,13 +32,14 @@ const DASH_TIME:float = 0.15
 @onready var target_ray: RayCast3D = $Head/Camera3D/TargetRay
 @onready var voxel_lod_terrain:VoxelTerrain = get_parent()
 @onready var voxel_tool: VoxelTool = voxel_lod_terrain.get_voxel_tool()
+@onready var inventory: Inventory = $Head/Camera3D/Inventory
 
 
 func _ready():
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 
 func _unhandled_input(event):
-	if event is InputEventMouseMotion:
+	if event is InputEventMouseMotion and !mouse_can_move:
 		rotate_y(-event.relative.x * MOUSE_SENSITIVITY)
 		
 		pitch = clamp(pitch - event.relative.y * MOUSE_SENSITIVITY, -MAX_LOOK_ANGLE, MAX_LOOK_ANGLE)
@@ -68,15 +70,13 @@ func _physics_process(delta):
 	velocity.x = direction.x * speed
 	velocity.z = direction.z * speed
 
+	inventory._inventory_vis()
+
 	_PlaceDestroyBlock(target_pos)
 	_Jump(delta)
 	_Dash(delta)
 
 	move_and_slide()
-	
-func _input(event):
-	if event is InputEventKey and event.keycode == KEY_ESCAPE:
-		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func _Dash(delta):
 	if dash_cd_timer > 0:
@@ -127,13 +127,13 @@ func _PlaceDestroyBlock(target_pos):
 	# Posición del voxel al que apuntás:
 	voxel_pos = world_to_voxel(target_pos)
 	
-	if Input.is_action_just_pressed("R_Click"):
+	if Input.is_action_just_pressed("R_Click") and !mouse_can_move:
 		#var new_voxel_pos = voxel_pos + Vector3(target_normal) * 0 # ROTO
 		var new_voxel_pos = world_to_voxel(target_pos + target_normal * 0.5) #FIXED Matematicas, no preguntes
 		voxel_tool.mode = VoxelTool.MODE_ADD
-		voxel_tool.set_voxel(new_voxel_pos,1)
+		voxel_tool.set_voxel(new_voxel_pos,2)
 	
-	if Input.is_action_just_pressed("L_Click"):
+	if Input.is_action_just_pressed("L_Click") and !mouse_can_move:
 		var new_voxel_pos = world_to_voxel(target_pos - target_normal * 0.5) #FIXED Matematicas, no preguntes
 		voxel_tool.mode = VoxelTool.MODE_REMOVE
 		voxel_tool.set_voxel(new_voxel_pos,0)

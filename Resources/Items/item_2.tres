@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="InvRes" load_steps=3 format=3 uid="uid://c6islpam2ofwy"]
+
+[ext_resource type="Script" uid="uid://bvnjc2l3exqpy" path="res://Scripts/UI/ItemsRes.gd" id="1_12cr4"]
+[ext_resource type="Texture2D" uid="uid://cbq7ya8xhitqj" path="res://icon.svg" id="2_u3afn"]
+
+[resource]
+script = ExtResource("1_12cr4")
+name = "Godoto"
+texture = ExtResource("2_u3afn")
+quantity = 3
+metadata/_custom_type_script = "uid://bvnjc2l3exqpy"

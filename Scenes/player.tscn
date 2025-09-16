@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://bk1q8mb076ok8"]
+[gd_scene load_steps=6 format=3 uid="uid://bk1q8mb076ok8"]
 
 [ext_resource type="Script" uid="uid://binmkdhsrgjj3" path="res://Scripts/player.gd" id="1_v0iea"]
+[ext_resource type="PackedScene" uid="uid://b4gls4a22dlgy" path="res://Scenes/UI/inventory.tscn" id="2_6t5aa"]
 [ext_resource type="PackedScene" uid="uid://cave1acpihc37" path="res://Scenes/UI/ui.tscn" id="2_cvnsp"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f60y1"]
@@ -27,6 +28,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50709, 0)
 target_position = Vector3(0, 0, -5)
 debug_shape_custom_color = Color(0.552211, 0.165168, 0.516847, 1)
 debug_shape_thickness = 1
+
+[node name="Inventory" parent="Head/Camera3D" instance=ExtResource("2_6t5aa")]
 
 [node name="UI" parent="Head/Camera3D" instance=ExtResource("2_cvnsp")]
 

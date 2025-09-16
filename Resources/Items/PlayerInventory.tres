@@ -1,0 +1,18 @@
+[gd_resource type="Resource" script_class="ItemBus" load_steps=6 format=3 uid="uid://cpwmncyj5ldn7"]
+
+[ext_resource type="Script" uid="uid://bvnjc2l3exqpy" path="res://Scripts/UI/ItemsRes.gd" id="1_hoam0"]
+[ext_resource type="Script" uid="uid://bpt2u6ih8dc7q" path="res://Scripts/UI/item_bus.gd" id="2_k1que"]
+[ext_resource type="Texture2D" uid="uid://dlk8yss0qx7hl" path="res://Assets/apple-icon.png" id="2_u5w5w"]
+[ext_resource type="Resource" uid="uid://c6islpam2ofwy" path="res://Resources/Items/item_2.tres" id="3_u5w5w"]
+
+[sub_resource type="Resource" id="Resource_ei44o"]
+script = ExtResource("1_hoam0")
+name = "Apple"
+texture = ExtResource("2_u5w5w")
+quantity = 1
+metadata/_custom_type_script = "uid://bvnjc2l3exqpy"
+
+[resource]
+script = ExtResource("2_k1que")
+Items = Array[ExtResource("1_hoam0")]([SubResource("Resource_ei44o"), null, null, null, null, null, null, null, ExtResource("3_u5w5w"), null, null, null, null, null, null, null])
+metadata/_custom_type_script = "uid://bpt2u6ih8dc7q"
