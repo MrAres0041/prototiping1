@@ -1,0 +1,65 @@
+[gd_scene load_steps=5 format=3 uid="uid://df0mftfui7a15"]
+
+[ext_resource type="Script" uid="uid://ccf7ds6vpygke" path="res://Scripts/UI/main_menu.gd" id="1_5wsvm"]
+[ext_resource type="PackedScene" uid="uid://hmp34wfqyng6" path="res://Scenes/test_5.tscn" id="2_i2xx2"]
+
+[sub_resource type="Theme" id="Theme_i2xx2"]
+VBoxContainer/constants/separation = 10
+
+[sub_resource type="Theme" id="Theme_36iwh"]
+Button/font_sizes/font_size = 32
+
+[node name="Main_Menu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_5wsvm")
+test_scene = ExtResource("2_i2xx2")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.2464, 0.365787, 0.44, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 13
+anchor_left = 0.5
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -164.0
+offset_right = 164.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = SubResource("Theme_i2xx2")
+alignment = 1
+
+[node name="Test_Scene" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_36iwh")
+text = "Test_Scene"
+
+[node name="Play" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_36iwh")
+text = "Play"
+
+[node name="Options" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_36iwh")
+text = "Options	"
+
+[node name="Quit" type="Button" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_36iwh")
+text = "Quit"
+
+[connection signal="pressed" from="VBoxContainer/Test_Scene" to="." method="_on_test_scene_pressed"]
+[connection signal="pressed" from="VBoxContainer/Quit" to="." method="_on_quit_pressed"]

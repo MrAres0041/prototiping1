@@ -12,7 +12,7 @@ color = Color(0.37969, 0.606766, 0.243195, 1)
 color = Color(0.44, 0.325013, 0.1936, 1)
 
 [sub_resource type="VoxelBlockyLibrary" id="VoxelBlockyLibrary_mope7"]
-models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_p1cy1"), SubResource("VoxelBlockyModelCube_tgpnc"), SubResource("VoxelBlockyModelCube_p1cy1")])
+models = Array[VoxelBlockyModel]([SubResource("VoxelBlockyModelEmpty_p1cy1"), SubResource("VoxelBlockyModelCube_tgpnc"), SubResource("VoxelBlockyModelCube_p1cy1"), null])
 
 [sub_resource type="VoxelMesherBlocky" id="VoxelMesherBlocky_lv0fi"]
 library = SubResource("VoxelBlockyLibrary_mope7")
@@ -49,4 +49,4 @@ transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -
 shadow_enabled = true
 
 [node name="Player" parent="." instance=ExtResource("2_p1cy1")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 49.644, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 100.64, 0)

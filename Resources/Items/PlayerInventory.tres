@@ -9,7 +9,6 @@
 script = ExtResource("1_hoam0")
 name = "Apple"
 texture = ExtResource("2_u5w5w")
-quantity = 1
 metadata/_custom_type_script = "uid://bvnjc2l3exqpy"
 
 [resource]

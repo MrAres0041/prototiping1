@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://dwlvxaguld7by"]
 
 [ext_resource type="Script" uid="uid://bjj72sifkswnl" path="res://Scripts/UI/inv_slots_ui.gd" id="1_b048c"]
-[ext_resource type="Texture2D" uid="uid://dvhl5x2gdw0he" path="res://Assets/inventory-slot.png" id="1_k61ct"]
+[ext_resource type="Texture2D" uid="uid://cshmn7et88ybi" path="res://Assets/BagSlot.png" id="2_b048c"]
 
 [node name="Inv_Slots_UI" type="Panel"]
 self_modulate = Color(1, 1, 1, 0)
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(70, 60)
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -16,12 +16,11 @@ grow_vertical = 2
 script = ExtResource("1_b048c")
 
 [node name="Frame" type="Sprite2D" parent="."]
-scale = Vector2(4, 4)
-texture = ExtResource("1_k61ct")
+texture = ExtResource("2_b048c")
 centered = false
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-custom_minimum_size = Vector2(64, 64)
+custom_minimum_size = Vector2(70, 60)
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -30,8 +29,8 @@ anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -32.0
 offset_top = -32.0
-offset_right = 32.0
-offset_bottom = 32.0
+offset_right = 38.0
+offset_bottom = 28.0
 grow_horizontal = 2
 grow_vertical = 2
 

@@ -23,6 +23,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.50709, 0)
 [node name="Camera3D" type="Camera3D" parent="Head"]
 
 [node name="VoxelViewer" type="VoxelViewer" parent="Head/Camera3D"]
+view_distance = 64
 
 [node name="TargetRay" type="RayCast3D" parent="Head/Camera3D"]
 target_position = Vector3(0, 0, -5)

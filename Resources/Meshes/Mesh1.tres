@@ -1,0 +1,8 @@
+[gd_resource type="VoxelBlockyModelMesh" load_steps=2 format=3 uid="uid://32g005vyrmo3"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_m503m"]
+
+[resource]
+color = Color(0.324466, 0.473253, 0.590228, 1)
+collision_enabled_0 = true
+mesh = SubResource("SphereMesh_m503m")

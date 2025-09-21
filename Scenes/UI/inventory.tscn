@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://b4gls4a22dlgy"]
 
 [ext_resource type="Script" uid="uid://cnwfyulw83ojh" path="res://Scripts/UI/inventory.gd" id="1_s6m5x"]
-[ext_resource type="Texture2D" uid="uid://dmpl52fkoxryn" path="res://Assets/inventory-background.png" id="2_dt15g"]
+[ext_resource type="Texture2D" uid="uid://big07vlec4yx4" path="res://Assets/Bag.png" id="2_osrsm"]
 [ext_resource type="PackedScene" uid="uid://dwlvxaguld7by" path="res://Scenes/UI/inv_slots_ui.tscn" id="3_osrsm"]
 
 [node name="Inventory" type="Control"]
@@ -22,86 +22,131 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.27, 0, 0.2655, 0.501961)
+color = Color(0.3575, 0.367125, 0.55, 0.501961)
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 layout_mode = 1
-anchors_preset = 8
+anchors_preset = 7
 anchor_left = 0.5
-anchor_top = 0.5
+anchor_top = 1.0
 anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -27.0
-offset_right = 150.0
-offset_bottom = 273.0
+anchor_bottom = 1.0
+offset_left = -392.0
+offset_top = -216.0
+offset_right = 392.0
+offset_bottom = 11.0
 grow_horizontal = 2
-grow_vertical = 2
-texture = ExtResource("2_dt15g")
+grow_vertical = 0
+texture = ExtResource("2_osrsm")
 patch_margin_left = 6
 patch_margin_top = 6
 patch_margin_right = 6
 patch_margin_bottom = 6
 
-[node name="SlotsContainer" type="GridContainer" parent="NinePatchRect"]
+[node name="CenterContainer" type="CenterContainer" parent="NinePatchRect"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -134.0
-offset_top = -135.0
-offset_right = 134.0
-offset_bottom = 149.0
+offset_left = -199.5
+offset_top = -149.5
+offset_right = 199.5
+offset_bottom = 149.5
 grow_horizontal = 2
 grow_vertical = 2
-columns = 4
 
-[node name="Inv_Slots_UI" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="SlotsContainer" type="GridContainer" parent="NinePatchRect/CenterContainer"]
+layout_mode = 2
+columns = 10
+
+[node name="Inv_Slots_UI11" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI2" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI12" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI3" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI13" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI4" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI14" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI5" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI15" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI6" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI16" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI7" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI17" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI8" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI18" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI9" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI19" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI10" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI20" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI11" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI21" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI12" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI22" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI13" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI23" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI14" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI24" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI15" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI25" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2
 
-[node name="Inv_Slots_UI16" parent="NinePatchRect/SlotsContainer" instance=ExtResource("3_osrsm")]
+[node name="Inv_Slots_UI26" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI27" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI28" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI29" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI30" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI31" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI32" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI33" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI34" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI35" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI36" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI37" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI38" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI39" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
+layout_mode = 2
+
+[node name="Inv_Slots_UI40" parent="NinePatchRect/CenterContainer/SlotsContainer" instance=ExtResource("3_osrsm")]
 layout_mode = 2

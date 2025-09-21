@@ -2,7 +2,8 @@ extends Control
 class_name Inventory
 
 @onready var inv:ItemBus = preload("res://Resources/Items/PlayerInventory.tres")
-@onready var slots: Array = $NinePatchRect/SlotsContainer.get_children()
+#@onready var slots: Array = $NinePatchRect/SlotsContainer.get_children()
+@onready var slots: Array = $NinePatchRect/CenterContainer/SlotsContainer.get_children()
 
 
 func _ready() -> void:
